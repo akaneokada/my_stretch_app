@@ -39,19 +39,23 @@
     <%= f.email_field :email %>
   </div>
 
-  <div class="form-group">
-    <div class="form-text-wrap">
-      <label class="form-text">パスワード</label>
+  <% if @sns_id.present? %>
+    <%= hidden_field_tag :sns_auth, true %>
+  <% else %>
+    <div class="form-group">
+      <div class="form-text-wrap">
+        <label class="form-text">パスワード</label>
+      </div>
+      <%= f.password_field :password %>
     </div>
-    <%= f.password_field :password %>
-  </div>
 
-  <div class="form-group">
-    <div class="form-text-wrap">
-      <label class="form-text">パスワード(確認)</label>
+    <div class="form-group">
+      <div class="form-text-wrap">
+        <label class="form-text">パスワード(確認)</label>
+      </div>
+      <%= f.password_field :password_confirmation %>
     </div>
-    <%= f.password_field :password_confirmation %>
-  </div>
+  <% end %>
 
   <div class="actions">
     <%= f.submit "登録する" %>
